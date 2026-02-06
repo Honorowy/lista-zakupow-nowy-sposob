@@ -1,6 +1,9 @@
 package com.example.listazakupwnowysposb;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ZakupyAdapter zakupyAdapter;
     private ArrayList<Produkt> listaZakupowArrayList = new ArrayList<>();
+    private Button buttonUsun;
+    private Button buttonDodaj;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         recyclerView = findViewById(R.id.recyclerView);
+        buttonUsun = findViewById(R.id.buttonUsun);
+        buttonDodaj = findViewById(R.id.buttonDodaj);
+        editText = findViewById(R.id.editText);
         listaZakupowArrayList.add(new Produkt("mąka"));
         listaZakupowArrayList.add(new Produkt("drożdże"));
         listaZakupowArrayList.add(new Produkt("cynamon"));
@@ -42,6 +51,19 @@ public class MainActivity extends AppCompatActivity {
         zakupyAdapter = new ZakupyAdapter(MainActivity.this, listaZakupowArrayList);
         recyclerView.setAdapter(zakupyAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
+        buttonUsun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                zakupyAdapter.usunZaznaczone();
+            }
+        });
+        buttonDodaj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                zakupyAdapter.dodajProdukt(new Produkt(editText.getText().toString()));
+            }
+        });
 
     }
 }

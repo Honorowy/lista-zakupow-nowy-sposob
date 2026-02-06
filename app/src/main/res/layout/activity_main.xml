@@ -28,7 +28,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -36,11 +36,17 @@
             android:hint="Podaj produkt" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonDodaj"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Dodaj" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonUsun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>

@@ -39,6 +39,14 @@ public class ZakupyAdapter extends RecyclerView.Adapter<ZakupyAdapter.ProduktVie
     public int getItemCount() {
         return listaZakupow.size();
     }
+    public void dodajProdukt(Produkt produkt){
+        listaZakupow.add(produkt);
+        notifyDataSetChanged();
+    }
+    public void usunZaznaczone() {
+        listaZakupow.removeIf(x -> x.isCzyZakupione());
+        notifyDataSetChanged();
+    }
 
 
     public class ProduktViewHolder extends RecyclerView.ViewHolder implements CompoundButton.OnCheckedChangeListener {
